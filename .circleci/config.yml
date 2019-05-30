@@ -16,8 +16,8 @@ jobs:
             if [ $CIRCLE_BRANCH=master ];then CHANNEL=stable; else CHANNEL=staging; fi
             GCS_PATH=gs://widgets.risevision.com/$CHANNEL/components/pricing/
             gsutil cp pricing-component-demo* $GCS_PATH
-            gsutil -m setmeta -r -h "Cache-Control:private, max-age=0" -h "content-type: text/javascript" $GCS_PATH*.mjs
-            gsutil -m setmeta -r -h "Cache-Control:private, max-age=0" -h "content-type: text/html" $GCS_PATH*.html
+            gsutil -m setmeta -r -h "Cache-Control:public, max-age=300" -h "content-type: text/javascript" $GCS_PATH*.mjs
+            gsutil -m setmeta -r -h "Cache-Control:public, max-age=300" -h "content-type: text/html" $GCS_PATH*.html
             gsutil acl -r ch -u AllUsers:R $GCS_PATH
 
 workflows:
