@@ -9,15 +9,20 @@ class PricingComponentDemo extends PolymerElement {
       pricingData: {type: Object, value: {}},
       displayCount: {type: Number, value: 2},
       period: {type: String, value: "yearly"},
-      applyDiscount: {type: Boolean, value: false}
+      applyDiscount: {type: Boolean, value: false},
+      dataLoading: {type: Boolean, computed: "isDataLoading(pricingData)"},
+      dataLoaded: {type: Boolean, computed: "isDataLoaded(pricingData)"}
     };
   }
+
+  isDataLoaded(pricingData) {return pricingData && Object.keys(pricingData).length && !pricingData.failed;}
+  isDataLoading(pricingData) {return !pricingData || !Object.keys(pricingData).length;}
 
   static get template() {
     return html`
       <style>
       </style>
-      <section>
+      <section hidden=[[!dataLoaded]]>
         <pricing-data-component pricing-data={{pricingData}}></pricing-data-component>
         <pricing-selector-component 
           show-display-count-section
@@ -34,6 +39,12 @@ class PricingComponentDemo extends PolymerElement {
           period=[[period]]
           apply-discount=[[applyDiscount]]
         </pricing-summary-component>
+      </section>
+      <section hidden=[[!pricingData.failed]]>
+        Failed load
+      </section>
+      <section hidden=[[!dataLoading]]>
+        Loading
       </section>
     `;
   }
