@@ -2,6 +2,7 @@ import {PolymerElement, html} from "https://unpkg.com/@polymer/polymer@next/poly
 import "https://widgets.risevision.com/stable/components/pricing/pricing-data-component.mjs"
 import "https://widgets.risevision.com/stable/components/pricing/pricing-selector-component.mjs"
 import "https://widgets.risevision.com/stable/components/pricing/pricing-summary-component.mjs"
+import "https://widgets.risevision.com/stable/components/pricing/pricing-grid-component.mjs"
 
 class PricingComponentDemo extends PolymerElement {
   static get properties() {
@@ -33,11 +34,16 @@ class PricingComponentDemo extends PolymerElement {
           period={{period}}
           apply-discount={{applyDiscount}}>
         </pricing-selector-component>
+        <pricing-grid-component
+          pricing-data=[[pricingData]]
+          period=[[period]]
+          display-count=[[displayCount]]>
+        </pricing-grid-component>
         <pricing-summary-component
           pricing-data=[[pricingData]]
           display-count=[[displayCount]]
           period=[[period]]
-          apply-discount=[[applyDiscount]]
+          apply-discount=[[applyDiscount]]>
         </pricing-summary-component>
       </section>
       <section hidden=[[!pricingData.failed]]>
