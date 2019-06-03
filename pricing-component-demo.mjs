@@ -8,7 +8,7 @@ class PricingComponentDemo extends PolymerElement {
   static get properties() {
     return {
       pricingData: {type: Object, value: {}},
-      displayCount: {type: Number, value: 2},
+      displayCount: {type: Number, value: 5},
       period: {type: String, value: "yearly"},
       applyDiscount: {type: Boolean, value: false},
       dataLoading: {type: Boolean, computed: "isDataLoading(pricingData)"},
