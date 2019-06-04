@@ -23,7 +23,7 @@ class PricingComponentDemo extends PolymerElement {
     return html`
       <style>
       </style>
-      <section hidden=[[!dataLoaded]]>
+      <section hidden$=[[!dataLoaded]]>
         <pricing-data-component pricing-data={{pricingData}}></pricing-data-component>
         <pricing-selector-component 
           show-display-count-section
@@ -46,10 +46,10 @@ class PricingComponentDemo extends PolymerElement {
           apply-discount=[[applyDiscount]]>
         </pricing-summary-component>
       </section>
-      <section hidden=[[!pricingData.failed]]>
+      <section hidden$=[[!pricingData.failed]]>
         Failed load
       </section>
-      <section hidden=[[!dataLoading]]>
+      <section hidden$=[[!dataLoading]]>
         Loading
       </section>
     `;
