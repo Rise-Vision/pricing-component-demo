@@ -10,6 +10,7 @@ class PricingComponentDemo extends PolymerElement {
       pricingData: {type: Object, value: {}},
       displayCount: {type: Number, value: 5},
       period: {type: String, value: "yearly"},
+      tierName: {type: String, value: ""},
       applyDiscount: {type: Boolean, value: false},
       dataLoading: {type: Boolean, computed: "isDataLoading(pricingData)"},
       dataLoaded: {type: Boolean, computed: "isDataLoaded(pricingData)"}
@@ -37,6 +38,7 @@ class PricingComponentDemo extends PolymerElement {
         <pricing-grid-component
           pricing-data=[[pricingData]]
           period=[[period]]
+          tier-name={{tierName}}
           display-count=[[displayCount]]>
         </pricing-grid-component>
         <pricing-summary-component
